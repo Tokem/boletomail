@@ -1,0 +1,75 @@
+<?php 
+    $auth = Zend_Auth::getInstance();
+    $identity = $auth->getIdentity();
+?>
+ <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="<?= $this->baseUrl() ?>/eventos/"><i class="fa fa-dashboard fa-fw"></i> Painel de Controle</a>
+                        </li>
+                        <?php if($identity->cli_permissao=="administrador"):?>
+                        <li>
+                            <a href="#"><i class="fa fa-envelope-o fa-fw"></i>Mailing<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?= $this->baseUrl() ?>/eventos/">Eventos</a>
+                                </li>
+                                <li>
+                                    <a href="<?= $this->baseUrl() ?>/estilos/">Estilos</a>
+                                </li>
+                                <li>
+                                    <a href="<?= $this->baseUrl() ?>/eventos/exportar-listas">Exportar Listas</a>
+                                </li>
+                                <li>
+                                    <a href="<?= $this->baseUrl() ?>/mailer/">Links</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                    <?php endif;?>
+                    <?php if($identity->cli_permissao=="administrador"|| $identity->cli_permissao=="administrador-agenda" || $identity->cli_permissao=="musico"|| $identity->cli_permissao=="produtor" ):?>
+                        <li>
+                            <a href="#"><i class="fa fa-music fa-fw"></i>Bandas<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?= $this->baseUrl() ?>/banda/">Listar</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                     <?php endif;?>   
+                     <?php if($identity->cli_permissao=="administrador"):?>
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i>Usuários<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?= $this->baseUrl() ?>/usuario/cadastrar">Cadastrar</a>
+                                </li>
+                                <li>
+                                    <a href="<?= $this->baseUrl() ?>/usuario/">Listar</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <!-- <li>
+                            <a href="<?php //echo $this->baseUrl()?>/backup/"><i class="fa fa-download fa-fw"></i>Backup<span class="fa arrow"></span></a>
+                            <!-- /.nav-second-level -->
+                        <!-- </li>  -->
+                    <?php endif;?>
+                    <li>
+                            <a href="<?php echo $this->baseUrl()?>/login/logout"><i class="fa fa-power-off fa-fw"></i>Logout<span class="fa arrow"></span></a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->

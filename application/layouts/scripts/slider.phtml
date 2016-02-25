@@ -1,0 +1,11 @@
+<div id="owl-demo" class="owl-carousel">
+                <?php foreach ($this->imagens as $obj):?>
+                              
+                            <div class="item" class="img_<?php echo $obj['ban_id']?>">
+                                <a href="<?= $this->baseUrl() ?>/agenda/index/id/<?php echo $obj['ban_id']?>">
+                                    <img  <?php echo ($banda_id == $obj['ban_id']) ? "style='opacity:0.3' " : "";?> src="<?= $this->baseUrl() ?>/bandas/<?php echo $obj['ban_foto']?>" alt="Owl Image">
+                                </a>    
+                            </div>
+                
+                <?php endforeach;?>
+              </div>

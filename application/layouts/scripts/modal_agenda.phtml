@@ -1,0 +1,252 @@
+
+<?php
+    $auth = Zend_Auth::getInstance();
+    $identity = $auth->getIdentity();
+?>
+
+<div id="root-picker-outlet" style="position:absolute"></div>
+<!-- Modal -->
+<div class="modal fade" id="modal_agenda"  role="dialog"  aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn btn-default" id="limpar">limpar</button>    
+                <button type="button" class="close cancel_agenda" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Cadastrar Agenda</h4>
+            </div>
+            <div class="modal-body">
+                <form  id="surveyForm" role="form" enctype="application/x-www-form-urlencoded"  action="<?php echo $this->baseUrl()?>/agenda/cadastrar" method="post">
+
+
+                    <fieldset id="fieldset-Dadosdoevento"><legend>Dados do evento</legend>
+
+                        <div class="form-group">
+                            <label for="age_nome" class="required">Evento/Local:</label>
+                            <input type="text" name="age_nome" id="age_nome" value="" class="form-control">
+                            <input type="hidden" name="ban_id" id="ban_id" value="" class="form-control">
+                            <input type="hidden" name="age_id_fk" id="age_id_fk" value="" class="form-control">
+                        </div>    
+
+                        <div class="form-group">
+                            <label for="age_data" class="required">Data:</label>
+                            <input type="text" name="age_data" id="age_data" value="" class="form-control hasDatepicker">
+                        <div/>
+
+                            <div class="form-group">
+                                
+                                <div class="form-group">
+                                <label for="age_data" >Hora:</label>
+                                <input type="text" name="age_hora" id="age_hora" value="" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="age_estado" class="required">Estado:</label>
+                                <select name="age_estado" id="age_estado" class="form-control">
+                                    <option value="" label="selecione o estado">selecione o estado</option>
+                                    <option value="AC" label="AC">AC</option>
+                                    <option value="AL" label="AL">AL</option>
+                                    <option value="AM" label="AM">AM</option>
+                                    <option value="AP" label="AP">AP</option>
+                                    <option value="BA" label="BA">BA</option>
+                                    <option value="CE" label="CE">CE</option>
+                                    <option value="DF" label="DF">DF</option>
+                                    <option value="ES" label="ES">ES</option>
+                                    <option value="GO" label="GO">GO</option>
+                                    <option value="MA" label="MA">MA</option>
+                                    <option value="MG" label="MG">MG</option>
+                                    <option value="MS" label="MS">MS</option>
+                                    <option value="MT" label="MT">MT</option>
+                                    <option value="PA" label="PA">PA</option>
+                                    <option value="PB" label="PB">PB</option>
+                                    <option value="PE" label="PE">PE</option>
+                                    <option value="PI" label="PI">PI</option>
+                                    <option value="PR" label="PR">PR</option>
+                                    <option value="RJ" label="RJ">RJ</option>
+                                    <option value="RN" label="RN">RN</option>
+                                    <option value="RS" label="RS">RS</option>
+                                    <option value="RO" label="RO">RO</option>
+                                    <option value="RR" label="RR">RR</option>
+                                    <option value="SC" label="SC">SC</option>
+                                    <option value="SE" label="SE">SE</option>
+                                    <option value="SP" label="SP">SP</option>
+                                    <option value="TO" label="TO">TO</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="age_cidade" class="required">Cidade:</label>
+                                <input type="text" name="age_cidade" id="age_cidade" value="" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="age_tipo" class="required">Tipo:</label>
+                                <select name="age_tipo" id="age_tipo" class="form-control">
+                                    <option value="" label="selecione o tipo">selecione o tipo</option>
+                                    <option value="Confirmado"  label="Confirmado">Confirmado</option>
+                                    <option value="Reserva" label="Reserva">Reserva</option>
+                                    <option value="Bloqueado" label="Bloqueado">Bloqueado</option>
+                                    <option value="Indefinido" label="Indefinido">Indefinido</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="age_obs" class="optional">Observação:</label>
+                                <textarea name="age_obs" id="age_obs" cols="180" rows="4" class="form-control cleditor"></textarea>
+                            </div>    
+
+                        </fieldset>
+
+                        <!-- INFORMAÇÕES DO CONTRATANTE -->
+                        <fieldset id="fieldset-Informaçõescontratante"><legend>Informações do Contratante</legend>
+
+                            <div class="form-group">
+                                <label for="con_nome" class="optional">Nome:</label>
+                                <input type="text" name="con_nome" id="con_nome" value="" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="con_telefone" class="optional">Telefone:</label>
+                                <input type="text" name="con_telefone" id="con_telefone" value="" class="form-control telefone">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="con_email" class="optional">Email:</label>
+                                <input type="text" name="con_email" id="con_email" value="" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="con_obs" class="optional">Observação:</label>
+                                <textarea name="con_obs" id="con_obs" cols="180" rows="4" class="form-control cleditor"></textarea>
+                            </div>  
+
+                        </fieldset>
+                        
+                        <fieldset id="fieldset-Informaçõesparceiros"><legend>Informações do parceiro</legend>
+
+                            <div class="form-group">
+                                <label for="par_nome" class="optional">Parceiro:</label>
+                                <input type="text" name="par_nome" id="par_nome" value="" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="par_valor" class="optional">Valor da comissão:</label>
+                                <input type="text" name="par_valor" id="par_valor" value="" class="form-control valor">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="par_obs" class="optional">Observação:</label>
+                                <textarea name="par_obs" id="par_obs" cols="180" rows="4" class="form-control cleditor"></textarea>
+                            </div>    
+                        </fieldset>
+
+                        
+                        <fieldset id="fieldset-Informaçõescontratante"><legend>Informações Financeiras</legend>
+
+                            <div class="form-group">
+                                <label for="age_valor" class="optional">Valor Pedido:</label>
+                                <input type="text" name="age_valor" id="age_valor" value="" class="form-control valor">
+                            </div>    
+                            
+                            <div class="form-group">
+                                <label for="" class="optional">Cachê real:</label>
+                                <input style="background-color: #E4F9E4;" type="text" name="age_cache_real" id="age_cache_real" value="" class="form-control valor">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fin_sinal" class="optional">Sinal:</label>
+                                <input type="text" name="age_sinal" id="age_sinal" value="" class="form-control valor">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fin_data_sinal" class="optional">Data Sinal:</label>
+                                <input type="text" name="age_data_sinal" id="age_data_sinal" value="" class="form-control">
+                            </div>
+
+                             <div class="form-group">
+                                <label for="par_obs" class="optional">Observação:</label>
+                                <textarea name="age_fin_obs" id="age_fin_obs" cols="180" rows="4" class="form-control cleditor"></textarea>
+                            </div>     
+                        </fieldset>
+
+                        <!-- Fim contratante -->
+                        
+                        <div class="form-group">
+
+                        <button type="button" class="btn btn-info" id="btn_parcelamento">EXIBIR PARCELAS</button> 
+                        <br/>
+                        <br/>   
+                        <div id="parcelas" style="display:none"> 
+
+                            <label class="col-xs-3 control-label">Parcelas</label>
+
+                            <!-- <div class="col-xs-4">
+                             <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+                            </div> -->
+                            
+                            <div class="col-xs-4" style="float:none">
+
+                                <div class="input-group input-append">
+                                    <input type="text" class="form-control valor" name="parcelas[]" placeholder="Valor" />
+                                    <span class="input-group-addon add-on"><span class="glyphicon glyphicon-plus addButton"></span></span>
+                                </div>
+                                <br/>
+
+                                <div class="input-group input-append date" id="dueDatePicker">
+                                    <input type="text" class="form-control" name="datas[]" placeholder="Data" />
+                                    <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                                
+                                <br/>
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="pago[]" value="pago"> Pago
+                                  </label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                            <!-- The option field template containing an option field and a Remove button -->
+                            <div class="form-group hide" id="optionTemplate" >
+                                    
+                                   <div class="col-xs-4" style="float:none">
+                                        <hr class="hr_parcelas">
+
+                                        <div class="input-group input-append date" >
+                                            <input type="text" class="form-control valor" name="parcelas[]" placeholder="Valor" />
+                                            <span class="input-group-addon add-on"><span class="glyphicon glyphicon-minus removeButton"></span></span>
+                                        </div>
+                                        
+                                        <br/>
+                                        <div class="input-group input-append date" id="dueDatePicker">
+                                            <input type="text" class="form-control" name="datas[]" placeholder="Data" />
+                                            <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                              <input type="checkbox" name="pago[]" value="pago" > Pago
+                                          </label>
+                                        </div>
+                                  </div>
+                        </div>
+
+                <div/>
+        </div>
+        <div class="modal-footer">
+            <?php if($identity->cli_permissao=="administrador"|| $identity->cli_permissao=="administrador-agenda"):?>        
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <?php endif?>
+            <button type="button" class="btn btn-default cancel_agenda" data-dismiss="modal">Cancelar</button>
+        </div>
+
+        </form>
+
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->        

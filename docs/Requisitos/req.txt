@@ -1,0 +1,45 @@
+1-login
+*logout
+
+2-cadastro de usuário.
+*nome, email, telefone,senha, confirmação, permissão(administrador,operador). todos podem fazer todas operações.
+	
+	2.1-editar usuário.
+	2.2-excluir usuário.(mensagem de confirmação)
+	2.3-listagem de usuários com paginação.
+
+3- Cadastro de Estilos.
+*nome do estilo
+	
+	3.1- Editar estilo.
+	3.2- Excluir estilo (mensagem de confirmação).
+	3.3- listagem de usuários com paginação.
+
+4- Cadastro de Evento.
+*nome do evento, data início, data fim, local do evento(dados em única linha utilizando o google maps), atrações,
+estilos listados do banco de dados.
+
+    4.1- Editar evento.
+	4.2- Excluir evento (mensagem de confirmação).
+	4.3- listagem de eventos com numeros de email arrecadados paginação.
+
+5-Cadastro de mailing.
+*primeiro nome, *segundo nome, *email, *telefone, *sexo
+
+	5.1 o fomulário fica ativo com a data inicial do evento e data terminio
+	5.2 botão para cadastrar.
+	5.3 botão para listar.
+	5.3 botão para ver informações do formulário.
+
+
+6-Mailing
+	
+	6.1-Exporta por evento ou estilo, nos formatos csv ou excel.
+
+7-Graficos
+	7.1 email cadastrados. 
+	7.2 eventos cadastrados.
+
+
+
+
