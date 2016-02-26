@@ -58,7 +58,7 @@ class Application_Form_Cadastro extends Zend_Form
 
 
 
-        $repetirEmail = new Zend_Form_Element_Password('repeat-senha');
+        $repetirEmail = new Zend_Form_Element_Text('repeat-senha');
         $repetirEmail->setLabel('Repetir email:')
                 ->setRequired(true)
                 ->addFilter($stripTags)
@@ -70,7 +70,7 @@ class Application_Form_Cadastro extends Zend_Form
        
         
         $telefone = new Zend_Form_Element_Text('cli_telefone');
-        $telefone->setLabel('Telefone')
+        $telefone->setLabel('Celular')
               ->setRequired(true)
               ->addFilter($stripTags)
               ->addFilter($trim)
@@ -95,8 +95,6 @@ class Application_Form_Cadastro extends Zend_Form
                 ->setIgnore(true)
                 ->setAttrib('class', 'form-control');
        
-        
-
         
         $submit = new Zend_Form_Element_Submit('Enviar');
         $submit->setLabel('Enviar Dados')

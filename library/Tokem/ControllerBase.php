@@ -29,15 +29,7 @@ class Tokem_ControllerBase extends Zend_Controller_Action {
         $identity = $auth->getIdentity();
         $this->identity = $identity;
         
-
         $this->_clientes = new Application_Model_Clientes();
-        
-
-        $codigoLogado = $identity->cli_codigo;
-
-        ## Lista de bandas ##        
-        
-        
     
         $acl = new Zend_Acl();
         $acl->getRoles(); //array
@@ -79,9 +71,6 @@ class Tokem_ControllerBase extends Zend_Controller_Action {
         } 
 
 
-        $permissoes = $this->_permissoes->fetchRow("cli_codigo_fk=$codigoLogado",null);
-
-        //$eventos = $this->_eventos->despesaAtual();
         
     }
     

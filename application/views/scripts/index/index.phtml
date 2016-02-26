@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+                        <div class="panel-heading">
+                            Últimos cadastros
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nome</th>
+                                            <th>Sexo</th>
+                                            <th>Data cadastro</th>
+                                            <th>Email</th>
+                                            <th>Data cadastro</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($this->paginator as $obj):?>
+                                        <tr>
+                                            <td><?php echo $obj->cli_id?></td>
+                                            <td><?php echo $obj->cli_nome?></td>
+                                            <td><?php echo $obj->cli_sexo?></td>
+                                            <td><?php echo $obj->cli_telefone?></td>                                            
+                                            <td><?php echo $obj->cli_email?></td>
+                                            <td><?php echo $this->DateTimeFormate($obj->cli_data_cadastro)?></td>
+                                            
+                                        </tr>
+                                        <?php endforeach;?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>

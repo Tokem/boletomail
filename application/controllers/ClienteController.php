@@ -124,8 +124,8 @@ class ClienteController extends Tokem_ControllerBase
 
             } catch (Zend_Db_Exception $e) {
                 
-                // echo $e->getMessage();
-                // exit;
+                echo $e->getMessage();
+                exit;
                 
                 $this->_dbAdapter->rollBack();
                 $flashMessenger = $this->_helper->FlashMessenger;

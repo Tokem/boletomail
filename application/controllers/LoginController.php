@@ -13,10 +13,9 @@ class LoginController extends Tokem_ControllerBase {
     protected function _getAuthAdapter() {
         $dbAdapter = Zend_Db_Table::getDefaultAdapter();
         $adapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
-        $adapter->setTableName('time_clientes')
+        $adapter->setTableName('clientes')
                 ->setIdentityColumn('cli_email')
-                ->setCredentialColumn('cli_senha')
-                ->setCredentialTreatment('MD5(?)');
+                ->setCredentialColumn('cli_senha');
         return $adapter;
     }
 
@@ -26,11 +25,20 @@ class LoginController extends Tokem_ControllerBase {
 
         $auth = Zend_Auth::getInstance();
         $loggedIn= $auth->hasIdentity();    
+        $identity = $auth->getIdentity();
 
         if($loggedIn){
-           $this->_redirect('/public/');
-           exit; 
+            if(@$identity->cli_permissao=="administrador"){
+               $this->_redirect('/');
+               exit; 
+            }
+
+            if(@$identity->cli_permissao=="usuario"){
+               $this->_redirect('/boleto');
+               exit; 
+            }
         }
+
 
         if ($request->isPost() && !empty($_POST)) {
 
@@ -40,19 +48,6 @@ class LoginController extends Tokem_ControllerBase {
             // põe os dados que serão autenticados
             $adapter->setIdentity($_POST['email'])
                     ->setCredential($_POST['senha']);
-
-        
-            // if($_POST['lembrar']==1){
-            //     $authNamespace = new Zend_Session_Namespace('Zend_Auth');
-            //     $authNamespace->user = $_POST['login'];
-            //     $authNamespace->password = $_POST['senha'];
-            //     $authNamespace->lembrar = $_POST['lembrar'];
-            // }else{
-            //     $authNamespace = new Zend_Session_Namespace('Zend_Auth');
-            //     unset($authNamespace->user);
-            //     unset($authNamespace->password);
-            //     unset($authNamespace->lembrar);
-            // }    
 
 
             //realiza a autenticação em si

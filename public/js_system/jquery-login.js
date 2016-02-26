@@ -43,13 +43,11 @@ $(document).ready(function() {
 
 function onLoginSuccess(e) {
 
-    var caminho = "/timebook/public/login";
+    var caminho = "/boletomail/public/login";
     var email = $("#email").val();
     var senha = $("#senha").val();
-    var redirectAdmin = "/timebook/public/banda";
-    var redirectMusico = "/timebook/public/banda";
-    var redirectProdutor = "/timebook/public/banda";
-
+    var redirectAdmin = "/boletomail/public/usuario/";
+    var redirectUsuario = "/boletomail/public/boleto";
 
     $.ajax({
         url: caminho,
@@ -62,6 +60,9 @@ function onLoginSuccess(e) {
           $("#mensagem").hide();   
         }, success: function(e) {
 
+
+          console.log(e);
+
           setTimeout( function() {
                     $("#btn-login").button('complete');
                     
@@ -73,23 +74,9 @@ function onLoginSuccess(e) {
                        $("#mensagem").show();
                     }else{
 
-                      if(obj.permissao=="administrador"){
-                        $(location).attr('href',redirectAdmin); 
+                      if(obj.permissao=="usuario"){
+                        $(location).attr('href',redirectUsuario); 
                       }
-
-                      if(obj.permissao=="musico"){
-                        $(location).attr('href',redirectMusico); 
-                      }
-
-                      if(obj.permissao=="administrador-agenda"){
-                        $(location).attr('href',redirectAdmin); 
-                      }
-                      if(obj.permissao=="produtor"){
-                        $(location).attr('href',redirectProdutor); 
-                      }
-                      // else{
-                      //   $(location).attr('href',redirec); 
-                      // }
                       
                     }
                     

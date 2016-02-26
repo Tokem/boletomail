@@ -24,7 +24,7 @@
 
     <!-- Custom Fonts -->
     <link href="<?= $this->baseUrl() ?>/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <?php echo $this->headLink()?>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -41,6 +41,13 @@ p{
     margin-bottom: 10px;
     margin-top: 10px;
 }
+
+
+h3.panel-title {
+    text-align: -webkit-center;
+    font-size: 15px;
+}
+
 </style>
 
 <body>
@@ -56,19 +63,27 @@ p{
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Digite seus dados de acesso</h3>
+                        <h3 class="panel-title">Digite seus dados de acesso para imprimir<br/> uma segunda via do boleto</h3>
                     </div>
                     <div class="panel-body">
                         <form role="form" id="login" data-bv-onsuccess="onLoginSuccess">
                             <fieldset>
                                 <div id="mensagem" style="color:red; display:none"></div>
                             </br>
-                                
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Email" name="email" id="email" type="email" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Senha" name="senha" id="senha" type="password" value="">
+                                </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <button type="Submit" id="btn-login" data-loading-text="Validando acesso..."data-complete-text="Logar" class="btn btn-lg btn-success btn-block" >Login</button>
-                                <p>Ou para participar do retiro</p>
+                                <br/>    
                                 <a href="<?php echo $this->baseUrl()?>/cadastro">
                                   <button type="button" id="btn-cadastro" class="btn btn-lg btn-primary btn-block" >Cadastre-se</button>
+                                </a>
+                                <a href="<?php echo $this->baseUrl()?>/cadastro/recuperar">
+                                    <p>Recuperar Senha</p>
                                 </a>
                             </fieldset>
                         </form>
@@ -95,7 +110,7 @@ p{
 
     <script src="<?= $this->baseUrl() ?>/js_system/jquery-login.js"></script>
 
-
+    <?php echo $this->headScript();?>
 
 
 
